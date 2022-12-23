@@ -1,0 +1,38 @@
+
+#This uses python
+
+
+import tweepy
+  
+#Set up a twitter developer account, you can find you "keys" and "tokens" there
+# assign the values accordingly
+consumer_key = ""
+consumer_secret = ""
+access_token = ""
+access_token_secret = ""
+
+  
+# authorization of consumer key and consumer secret
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+  
+# set access to user's access key and access secret 
+auth.set_access_token(access_token, access_token_secret)
+  
+# calling the api 
+api = tweepy.API(auth)
+  
+# the screen_name of the targeted user
+# user = screen_name = "Tree_of_Alpha"
+
+followers = api.get_friends(screen_name = "Tree_of_Alpha")
+# print(followers)
+
+  
+for follower in followers:
+    if follower.followers_count < 2000:
+        print(follower.screen_name)
+
+
+
+
+# for follower in api.followers(screen_name):
